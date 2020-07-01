@@ -10,9 +10,23 @@
 
 // server.listen(port, 'localhost');
 
-var screen = require("./screen");
+const screen = require("./screen");
+const veryfi = require("./functions/veryfication");
+const Board = require("./models/board");
 
 var scr = screen();
+var br = new Board();
+// var ver = veryfi(false);
+let x = 8,
+    y = 4;
 
 scr.clear();
-scr.setValue(1, 1, 9, 6);
+
+
+br.setField(x, y, 2);
+
+br.board[x][y] = 3;
+// scr.setValue(1, x, y, br.getField(x, y));
+scr.setBoard(1, br.board);
+// console.table(br.board);
+console.log(veryfi(br.board));
