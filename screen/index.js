@@ -42,8 +42,8 @@ module.exports = function(data) {
 
         },
         setValue: function(b, x, y, v) {
-            let xp = 2 + (b - 1) * 26 + x * 2 + 2 * (x > 3) + 2 * (x > 6);
-            let yp = y + 3 + (y > 3) + (y > 6);
+            let xp = 4 + b * 26 + x * 2 + 2 * (x > 2) + 2 * (x > 5);
+            let yp = y + 4 + (y > 2) + (y > 5);
             let vp = (v) ? v.toString() : ' ';
             s2 = '\033[' + yp + ';' + xp + 'H' + vp + '\033[16;0H';
             console.log(s2);
@@ -51,7 +51,7 @@ module.exports = function(data) {
         setBoard: function(b, values) {
             for (let x = 0; x < 9; x++) {
                 for (let y = 0; y < 9; y++) {
-                    this.setValue(b, x + 1, y + 1, values[x][y]);
+                    this.setValue(b, x, y, values[x][y]);
                 }
 
             }

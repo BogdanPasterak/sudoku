@@ -9,10 +9,10 @@ class Board {
         this._board = value;
     }
     setField(x, y, v) {
-        this.board[x - 1][y - 1] = v;
+        this.board[x][y] = v;
     }
     getField(x, y) {
-        return this.board[x - 1][y - 1] || 0;
+        return this.board[x][y] || 0;
     }
 }
 
