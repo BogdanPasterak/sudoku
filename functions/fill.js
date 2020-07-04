@@ -6,52 +6,33 @@ module.exports = function(board) {
     let comment = "Bogdan";
 
     let fields = Array.from(Array(81).keys());
-    let values = Array(9);
-    values.fill(9);
+    let values = Array.from(Array(81).keys()).map(x => (x % 9) + 1);
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 71; i++) {
 
         do {
-            ok = true;
-            // do {
-            //     f = rnd81();
-            //     if (fields[f] === false) {
-            //         fields[f] = true;
-            //         ok = true;
-            //     }
-            // } while (!ok); // ok true
+            ok = false;
+            // random place from avaliable
             f = fields.splice(Math.random() * fields.length | 0, 1)[0];
             x = f % 9;
             y = f / 9 | 0;
 
-            do {
-                v = Math.random() * 9 | 0;
-                if (values[v]) {
-                    values[v]--;
-                    ok = false;
-                }
-            } while (ok); // ok false
-            board[x][y] = v + 1;
+            // random value from avaliable
+            v = values.splice(Math.random() * values.length | 0, 1)[0];
+            board[x][y] = v;
 
             if (!veryfi.field(board, x, y)) {
                 board[x][y] = 0;
                 fields.push(f);
+                values.push(v);
                 ok = true;
                 // unverified
                 max++;
-                // if (comment == "Bogdan")
                 comment = "x = " + x + "  y = " + y + "  v = " + (v + 1) + "  i = " + i + "  max = " + max;
-            } else {
-                // comment = "x = " + x + "   y = " + y +;
-                // break;
-                // max--;
-                // if (max < 0) {
-                //     comment = "x = " + x + "   y = " + y;
-                //     ok = true;
-                // }
+                if (max > 500) break;
             }
         } while (ok);
-
+        if (max > 500) break;
     }
     console.log("\033[1A" + comment);
 
