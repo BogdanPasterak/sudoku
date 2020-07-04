@@ -1,17 +1,6 @@
-// var http = require('http');
-
-// var handleReguest = function(req, res) {
-//     res.writeHead(200, { 'Content-Type': 'text/plain' });
-//     res.end("Witaj bogdan\n");
-// };
-
-// var server = http.createServer(handleReguest);
-// const port = process.env.PORT || 3000;
-
-// server.listen(port, 'localhost');
-
 const Screen = require("./screen");
 const Veryfi = require("./functions/veryfication");
+const fill = require("./functions/fill");
 const Board = require("./models/board");
 
 var screen = Screen();
@@ -24,9 +13,9 @@ let x = 7,
 screen.clear();
 
 
-br.setField(x, y, 2);
-br.board[x + 1][y + 1] = 3;
-
+// br.setField(x, y, 2);
+// br.board[x + 1][y + 1] = 3;
+fill(br.board);
 // screen.setValue(0, x, y, br.getField(x, y));
 screen.setBoard(0, br.board);
 // console.table(br.board);
