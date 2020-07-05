@@ -55,6 +55,9 @@ module.exports = function(data) {
                 }
 
             }
+        },
+        comment: function(str) {
+            console.log("\33[1A" + str);
         }
     };
 

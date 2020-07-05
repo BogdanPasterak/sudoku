@@ -15,9 +15,25 @@ screen.clear();
 
 // br.setField(x, y, 2);
 // br.board[x + 1][y + 1] = 3;
-fill(br.board);
+let queue = fill(br.board);
+br.clear();
+let comment = br.fill(queue, 20);
+screen.comment(comment);
+
 // screen.setValue(0, x, y, br.getField(x, y));
 screen.setBoard(0, br.board);
+screen.setBoard(1, br.board);
+screen.setBoard(2, br.board);
 // console.table(br.board);
 // console.log(veryfi.field(br.board, x, y));
 // console.log(veryfi.board(br.board));
+for (const key in queue) {
+    if (queue.hasOwnProperty(key)) {
+        const element = queue[key];
+        // console.log(key, element);
+    }
+}
+for (const it of queue.queue) {
+    // console.log(it);
+}
+// screen.clear();
