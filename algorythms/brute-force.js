@@ -16,18 +16,27 @@ function next(veryfi, board, x, y, v) {
     if (ans) {
         if (x !== ans.x || y !== ans.y) {
             v = 1;
-            x = ans.x;
-            y = ans.y;
         }
-        board[x][y] = v;
-        if (veryfi.field(board, x, y)) {;
-        } else {
+        board[ans.x][ans.y] = v;
+        if (!veryfi.field(board, ans.x, ans.y)) {
             v++;
-            board[x][y] = 0;
+            board[ans.x][ans.y] = 0;
             if (v > 9) return false;
         }
-
-        return next(veryfi, board, x, y, v);
+        let back = next(veryfi, board, ans.x, ans.y, v);
+        if (back) {
+            return true;
+        } else {
+            if (x === ans.x && y === ans.y) {
+                return false;
+            } else {
+                console.log("Bogdan");
+                v = board[x][y] + 1;
+                board[x][y] = 0;
+                if (v > 9) return false;
+                return true;
+            }
+        }
     }
     return false;
 }
