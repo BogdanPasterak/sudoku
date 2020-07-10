@@ -4,7 +4,7 @@ module.exports = function() {
         board: function(boardArr) {
             if (!boardArr || !Array.isArray(boardArr) || !Array.isArray(boardArr[0])) return false;
             let is = true;
-            let line = Array(9);
+            let line = Array(10);
 
             // check columns
             for (let x = 0; x < 9; x++) {
@@ -64,7 +64,7 @@ module.exports = function() {
         field: function(boardArr, x, y) {
             if (!boardArr || !Array.isArray(boardArr) || !Array.isArray(boardArr[0])) return false;
             let is = true;
-            let line = Array(9);
+            let line = Array(10);
 
             line.fill(false);
             for (let yi = 0; yi < 9; yi++) {

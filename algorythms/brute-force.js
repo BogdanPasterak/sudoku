@@ -6,20 +6,28 @@ module.exports = function(board) {
     const veryfi = Veryfi();
     const list = new Array();
 
-    let ans = next(board, 0, 0);
+    let ans = next(veryfi, board, 0, 0, 1);
 
     return "now " + ans.x + " " + ans.y;
 }
 
-function next(board, x, y) {
+function next(veryfi, board, x, y, v) {
     let ans = empty(board, x, y);
     if (ans) {
-        x = ans.x;
-        y = ans.y;
-        board[x][y] = 1;
+        if (x !== ans.x || y !== ans.y) {
+            v = 1;
+            x = ans.x;
+            y = ans.y;
+        }
+        board[x][y] = v;
+        if (veryfi.field(board, x, y)) {;
+        } else {
+            v++;
+            board[x][y] = 0;
+            if (v > 9) return false;
+        }
 
-        next(board, x, y);
-        return { x, y };
+        return next(veryfi, board, x, y, v);
     }
     return false;
 }
