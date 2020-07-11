@@ -19,5 +19,8 @@
   "homepage": "https://github.com/BogdanPasterak/sudoku#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cli-interact": "^0.1.9"
   }
 }
